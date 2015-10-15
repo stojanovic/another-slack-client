@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/stojanovic/another-slack-client",
   "dependencies": {
+    "querystring": "^0.2.0",
     "request-promise": "^1.0.0"
   },
   "devDependencies": {

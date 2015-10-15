@@ -12,7 +12,9 @@ test('Connection tests', function(t) {
 
   t.throws(() => { new Slack() }, Error, 'throws an error if there\'s no token')
 
-  let slack = new Slack(SLACK_TOKEN)
+  let slack = new Slack(SLACK_TOKEN, false)
 
   t.ok(slack instanceof Slack, 'creates an instance of Slack if token is present')
 })
+
+// TODO: Add Login test and mock http requests with `nock`
