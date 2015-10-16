@@ -42,11 +42,11 @@ test('API test', (t) => {
 
   slack.apiTest()
     .then(response =>
-      t.ok(reposnse.ok, 'API test returns ok: true'))
+      t.ok(response.ok, 'API test returns ok: true'))
   
   slack.authTest()
     .then(response =>
-      t.ok(reposnse.ok, 'Auth test returns ok: true'))
+      t.ok(response.ok, 'Auth test returns ok: true'))
 })
 
 test('Channels test', (t) => {

@@ -76,9 +76,21 @@ module.exports = class Slack {
 
   }
 
-  apiTest() {}
+  apiTest() {
+    const apiMethod = 'api.test'
 
-  authTest() {}
+    let params = {}
+
+    return this._apiCall(apiMethod, params)
+  }
+
+  authTest() {
+    const apiMethod = 'auth.test'
+
+    let params = {}
+
+    return this._apiCall(apiMethod, params)
+  }
 
   // Internal API call method
   _apiCall(apiMethod, params) {
