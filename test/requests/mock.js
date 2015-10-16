@@ -28,6 +28,12 @@ let mock = nock('https://slack.com/api/')
   .reply(200, loginSuccess)
   
   // ...
+  .post('/rtm.start', querystring.stringify({
+    token: INVALID_TOKEN
+  }))
+  .reply(200, tokenError)
+  
+  // ...
   .post('/api.test', querystring.stringify({
     token: SLACK_TOKEN
   }))
