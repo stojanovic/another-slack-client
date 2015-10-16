@@ -11,21 +11,32 @@ const SLACK_TOKEN     = 'xoxp-1111111111-1111111111-11111111111-1111111111'
 
 let loginSuccess = fs.readFileSync(path.resolve(__dirname, 'login', 'success.json'), 'UTF-8')
 let tokenError   = fs.readFileSync(path.resolve(__dirname, 'general', 'invalid-token.json'), 'UTF-8')
+let apiTest      = fs.readFileSync(path.resolve(__dirname, 'general', 'api-test.json'), 'UTF-8')
+let authTest     = fs.readFileSync(path.resolve(__dirname, 'general', 'auth-test.json'), 'UTF-8')
 
 let mock = nock('https://slack.com/api/')
+  // ...
   .post('/rtm.start', querystring.stringify({
     token: SLACK_TOKEN
   }))
   .reply(200, loginSuccess)
   
+  // ...
   .post('/rtm.start', querystring.stringify({
     token: SLACK_TOKEN
   }))
   .reply(200, loginSuccess)
   
-  .post('/rtm.start', querystring.stringify({
-    token: INVALID_TOKEN
+  // ...
+  .post('/api.test', querystring.stringify({
+    token: SLACK_TOKEN
   }))
-  .reply(200, tokenError)
+  .reply(200, apiTest)
+  
+  // ...
+  .post('/auth.test', querystring.stringify({
+    token: SLACK_TOKEN
+  }))
+  .reply(200, authTest)
 
 module.exports = mock

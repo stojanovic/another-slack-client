@@ -34,3 +34,65 @@ test('Login tests', (t) => {
     .catch(message => 
       t.ok(message === 'invalid_auth', 'invalid token throws an error'))
 })
+
+test('API test', (t) => {
+  t.plan(2)
+
+  var slack = new Slack(SLACK_TOKEN, false)
+
+  slack.apiTest()
+    .then(response =>
+      t.ok(reposnse.ok, 'API test returns ok: true'))
+  
+  slack.authTest()
+    .then(response =>
+      t.ok(reposnse.ok, 'Auth test returns ok: true'))
+})
+
+test('Channels test', (t) => {
+  t.plan(1)
+})
+
+test('Chats test', (t) => {
+  t.plan(1)
+})
+
+test('Emoji test', (t) => {
+  t.plan(1)
+})
+
+test('Files test', (t) => {
+  t.plan(1)
+})
+
+test('Groups test', (t) => {
+  t.plan(1)
+})
+
+test('IM test', (t) => {
+  t.plan(1)
+})
+
+test('Pins test', (t) => {
+  t.plan(1)
+})
+
+test('Reactions test', (t) => {
+  t.plan(1)
+})
+
+test('Search test', (t) => {
+  t.plan(1)
+})
+
+test('Stars test', (t) => {
+  t.plan(1)
+})
+
+test('Teams test', (t) => {
+  t.plan(1)
+})
+
+test('Users test', (t) => {
+  t.plan(1)
+})
