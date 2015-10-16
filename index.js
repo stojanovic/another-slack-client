@@ -25,7 +25,9 @@ module.exports = class Slack {
 
     // Check if autologin is set and login if it is
     if (autoLogin)
-      this.login()
+      return this.login()
+
+    return this
   }
 
   // The Slack login method
@@ -40,7 +42,7 @@ module.exports = class Slack {
     if (noUnreads)
       params['no_unreads'] = noUnreads
 
-    this._apiCall(apiMethod, params)
+    return this._apiCall(apiMethod, params)
       .then(response => {
 
         // Save web socket url for the events
@@ -92,7 +94,8 @@ module.exports = class Slack {
     return request(options)
       // But since Slack always returns `status: 200` we just intercept the 
       // response and throw an error if `ok` is `false`
-      .then(response => {
+      .then(rawResponse => {
+        let response = JSON.parse(rawResponse)
         if (!response.ok)
           throw response.error
         // Otherwise we just return full response
