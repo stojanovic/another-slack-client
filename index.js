@@ -76,6 +76,10 @@ module.exports = class Slack {
 
   }
 
+  apiTest() {}
+
+  authTest() {}
+
   // Internal API call method
   _apiCall(apiMethod, params) {
     // Check if params are passed or init them
